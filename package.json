@@ -1,0 +1,19 @@
+{
+  "name": "rybble-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway for the Rybble application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belzy/rybble-gateway.git"
+  },
+  "author": "Brandon G. Elzy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/belzy/rybble-gateway/issues"
+  },
+  "homepage": "https://github.com/belzy/rybble-gateway#readme"
+}
