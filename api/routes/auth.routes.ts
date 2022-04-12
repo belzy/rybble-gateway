@@ -30,11 +30,39 @@ authRouter.post('/register', (request: Request, response: Response, next: NextFu
       data: { name, email }
     }).then(({ data }: AxiosResponse) => {
 
-      response.json(data);
+      const { user_id } = data;
+
+      // response.json({ user_id, password, type });
+
+      axios({
+        method: 'POST',
+        url: 'http://localhost:8081/auth/register/email',
+        data: { user_id, username: email, password, type },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(({ data }) => {
+
+        console.log(`[server] User registered.`);
+        response.status(201).json(data);
+
+      }).catch(postAuthError => {
+
+        const { status, data } = postAuthError.response;
+
+        console.error(`[server] Error: ${ data.Error }`);
+
+        response
+          .status(status)
+          .json(data);
+
+      });
 
     }).catch(postError => {
 
       const { status, data } = postError.response;
+
+      console.error(`[server] Error: ${ data.Error }`);
 
       response
         .status(status)
